@@ -1,77 +1,69 @@
-# EMF Dashboard — Algorand AI Orchestration
+<div align="center">
 
-**Pay once. Orchestrate everything.**
+# EMF Dashboard: Algorand AI Orchestration
 
-A single request atomically coordinates multiple paid AI endpoints on Algorand — no subscriptions, no friction. This project is an interactive demo dashboard showing what an [x402](https://x402.org)-style micro-payment workflow looks like when every step in an AI pipeline (search → scrape → summarize → report) settles independently on-chain, with atomic rollback if any step fails.
+**Pay once. Orchestrate everything.** One request coordinates several paid AI endpoints on Algorand, with each step settled as its own micro-payment.
 
-![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js)
-![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)
-![Algorand](https://img.shields.io/badge/Algorand-Testnet-000000?logo=algorand)
+<img src="docs/screenshots/hero.webp" alt="EMF hero: Pay once. Orchestrate everything." width="100%">
 
-## ✨ What it does
+</div>
 
-The dashboard walks through a simulated **AI research agent workflow**, where each stage of the pipeline is an independently priced, independently paid API call settled in **USDC on Algorand testnet**:
+## What it shows
 
-| Step | Service         | Price      |
-|------|-----------------|------------|
-| 01   | Search API      | 0.01 USDC  |
-| 02   | Scraper API     | 0.02 USDC  |
-| 03   | Summarizer API  | 0.01 USDC  |
-| 04   | Report Writer   | 0.03 USDC  |
+An interactive demo of what [x402](https://x402.org)-style micro-payments could look like for multi-step AI workflows. A simulated research agent runs four steps. Each step is an independently priced API call, paid in USDC on Algorand testnet:
 
-- **Live execution view** — watch each step move through `Pending → Paying → Settled`, with a simulated transaction hash per step.
-- **Atomic rollback** — toggle "Simulate Failure" to see what happens when a step fails mid-workflow: prior steps roll back and the total charge resets to `0.00 USDC`, demonstrating all-or-nothing settlement.
-- **Unified receipt** — a single, itemized receipt combining every micro-settlement into one verifiable master hash once the workflow completes.
-- **Cost breakdown** — a transparent per-step cost chart so users always know exactly what they paid for.
+| Step | Service | Price |
+|---|---|---|
+| 01 | Search API | 0.01 USDC |
+| 02 | Scraper API | 0.02 USDC |
+| 03 | Summarizer API | 0.01 USDC |
+| 04 | Report Writer | 0.03 USDC |
 
-## 🛠 Tech Stack
+<table>
+  <tr>
+    <td width="50%"><img src="docs/screenshots/running.webp" alt="Research agent input"></td>
+    <td width="50%"><img src="docs/screenshots/settled.webp" alt="Live execution"></td>
+  </tr>
+  <tr>
+    <td><b>Start a workflow.</b> Type a research query or pick a preset (EV Market 2026, AI Trends, Competitor Analysis).</td>
+    <td><b>Live execution.</b> Each step moves Pending → Paying → Settled with a simulated transaction hash. Total: 0.07 USDC.</td>
+  </tr>
+</table>
 
-- **[Next.js 16](https://nextjs.org)** (App Router) + **React 19** + **TypeScript**
-- **Tailwind CSS 4** for styling
-- **[Framer Motion](https://www.framer.com/motion/)** for animated step transitions
-- **[Recharts](https://recharts.org/)** for the cost breakdown chart
-- **[Lucide](https://lucide.dev/)** icons
+- **Atomic rollback**: switch on *Simulate failure* and a step fails mid-run. The earlier steps roll back and the total charge returns to 0.00 USDC, so settlement is all-or-nothing.
+- **Unified receipt**: once the run completes, every micro-settlement is combined into one itemised receipt with a master hash.
+- **Cost breakdown**: a per-step chart of what was paid for.
 
-## 🚀 Getting Started
+All payments in this demo are simulated; no wallet or testnet transaction is involved.
 
-Install dependencies and start the dev server:
+## Why Algorand
+
+Fast finality and low fees make per-request payments practical. Instead of a subscription or one bulk payment, each API call in a multi-step workflow can settle on its own.
+
+## Tech stack
+
+Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, Framer Motion, Recharts, Lucide icons.
+
+## Run locally
 
 ```bash
 npm install
-npm run dev
+npm run dev        # http://localhost:3000
+npm run build      # production build
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the dashboard.
+## Project structure
 
-### Other scripts
-
-```bash
-npm run build    # production build
-npm run start   # run the production build
-npm run lint     # lint the project
 ```
-
-## 📁 Project Structure
-
-```text
 src/
-├── app/
-│   ├── layout.tsx              # root layout
-│   ├── page.tsx                 # dashboard page — wires everything together
-│   └── globals.css
-└── components/
-    ├── Hero.tsx                 # landing hero section
-    ├── WorkflowInput.tsx         # research query input + presets
-    ├── LiveWorkflowExecution.tsx  # step-by-step payment simulation
-    ├── UnifiedReceipt.tsx         # combined settlement receipt
-    └── CostBreakdown.tsx          # per-step cost chart
+  app/
+    layout.tsx
+    page.tsx                    the dashboard page
+  components/
+    Hero.tsx                    landing hero
+    WorkflowInput.tsx           research query input and presets
+    LiveWorkflowExecution.tsx   step-by-step payment simulation
+    UnifiedReceipt.tsx          combined settlement receipt
+    CostBreakdown.tsx           per-step cost chart
 ```
-
-## 💡 Why Algorand
-
-Algorand's fast finality and low fees make per-request micro-payments practical — instead of a subscription or a single bulk payment, each API call in a multi-step AI workflow can settle independently on-chain in real time, with atomicity guarantees if any step in the chain fails.
-
-## 📄 License
-
-This project is private and not licensed for redistribution.
