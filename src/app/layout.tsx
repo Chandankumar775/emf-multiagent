@@ -13,7 +13,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "EMF Dashboard | Superdesign",
+  title: "EMF | Pay once. Orchestrate everything.",
   description: "One request atomically coordinates multiple paid AI endpoints on Algorand.",
 };
 

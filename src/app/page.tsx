@@ -38,7 +38,7 @@ export default function Home() {
       <nav id="main-nav" className="absolute top-0 left-0 right-0 z-50 py-8 bg-transparent">
         <div className="container mx-auto px-6 flex items-center justify-between">
           <a href="#" className="text-2xl font-bold tracking-tighter font-serif">
-            Superdesign.
+            EMF.
           </a>
           <div className="text-xs uppercase tracking-widest font-mono text-gray-500">
             EMF Dashboard
@@ -67,7 +67,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
             <div className="w-full md:w-auto">
               <h2 className="text-[10vw] leading-[0.8] tracking-tighter text-white/10 font-bold select-none pointer-events-none font-serif">
-                SUPERDESIGN.
+                ORCHESTRATE.
               </h2>
             </div>
             
