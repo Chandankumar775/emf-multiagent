@@ -1,8 +1,10 @@
 <div align="center">
 
-# EMF Dashboard: Algorand AI Orchestration
+<img src="docs/brand/wordmark.webp" alt="EMF Dashboard: Algorand AI Orchestration" width="100%">
 
 **Pay once. Orchestrate everything.** One request coordinates several paid AI endpoints on Algorand, with each step settled as its own micro-payment.
+
+[Live demo](https://algorand-agent-payments.vercel.app)
 
 <img src="docs/screenshots/hero.webp" alt="EMF hero: Pay once. Orchestrate everything." width="100%">
 
